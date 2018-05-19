@@ -52,9 +52,9 @@ function initMap() {
     if(mapDiv.hasClass('col-sm-12')){
       mapDiv.removeClass('col-sm-12').addClass('col-sm-9');
       $("#panelOculto").toggle(100);
-      $("#filtro").toggle(100);
     }
-    petition(event.latLng);
+    showNetworks();
+    //petition(event.latLng);
     map.setZoom(17);
     addMarker(event.latLng);
     
@@ -97,7 +97,11 @@ function addMarker(location) {
 //FUNCION QUE ENSEÑA LAS REDES WIFI Y LAS FILTRA
 function showNetworks() {
   $("#accordion").html("");
+  $("#cache").html("");
   console.log(wifi);
+  //$("#accordion").append("<form id='filtro'><label class='radio-inline'><input type='radio' name='optradio' class='allNetworks' checked>Todas</label><label class='radio-inline'><input type='radio' name='optradio' class='openNetworks'>Abiertas</label><label class='radio-inline'><input type='radio' name='optradio' class='closedNetworks'>Cerradas</label></form>");
+
+  $("#filtro").css('display', "inline-block");
   for (var i = 0; i < wifi.length; i++) {
     //Obtenemos la informacion de cada red wifi
     var name = wifi[i].SSID;
@@ -122,9 +126,18 @@ function showNetworks() {
     $("#accordion").append("<div class='panel panel-default'> <div class='panel-heading'> <h4 class='panel-title'> <a data-toggle='collapse' data-parent='#accordion' href='#collapse"+i+1+"'>" + name + " (" + tipo + ")" +  "</a> </h4></div> <div id='collapse"+ i+1+"' class='panel-collapse collapse'> <div class='panel-body'><p>MAC: " + MAC + "</p><p>Tipo: " + type + "</p><p>Potencia: " + SignalStrength + " dBm</p></div> </div> </div>");
     
   }
+  for (var i = 0; i < cache.length; i++) {
+      var lat = cache[i].lat;
+      var lng = cache[i].lng;
 
+      //Obtenemos la informacion de cada red wifi
+      $("#cache").append("<a href='#' class='list-group-item list-group-item-action list-group-item-secondary' id='point1'>"+lat + ", " + lng +"</a>");
+  }
 }
 
+$("#point1").click(function(){
+  console.log("LLega a ");
+});
 var cache = [{
     "lat": 11.1111111,
     "lng": 22.2222222
@@ -147,7 +160,7 @@ var cache = [{
   }
 ];
 //EJEMPLO DE RESPUESTA DEL SERVIDOR PARA UN PUNTO
-/*var wifi = [{
+var wifi = [{
     "index": 1,
     "SSID": "Movistar V00001",
     "MAC": "00:00:00:00:00:01",
@@ -203,4 +216,4 @@ var cache = [{
     "Type": "OpenEnc1",
     "SignalStrength": -68
   }
-];*/
+];
