@@ -1,0 +1,91 @@
+/* Remove the navbar's default margin-bottom and rounded borders */ 
+.navbar {
+  margin-bottom: 0;
+  border-radius: 0;
+}
+
+/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+.row.content {height: 585px}
+
+/* Set gray background color and 100% height */
+.sidenav {
+  padding-top: 20px;
+  background-color: #f1f1f1;
+  height: 100%;
+}
+
+/* Set black background color, white text and some padding */
+footer {
+  background-color: #555;
+  color: white;
+  padding: 10px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+  .sidenav {
+    height: auto;
+    padding: 15px;
+  }
+  .row.content {height:auto;} 
+}
+
+.map-responsive{
+  height:100%;
+}
+.maps {
+  height: 100%;
+}
+.latlng {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.btn-tray {
+  width: 100%;
+}
+
+.ads {
+  height: 80px;
+}
+
+#map {
+  height: 100%;
+}
+
+#panelOculto {
+  overflow:scroll;
+  overflow-x:hidden;
+  
+}
+
+#mensajeUsuario{
+	color: white;
+	margin-top:13px;
+	font-size: 15;
+	font-family: Arial;
+}
+
+#floating-panel {
+  position: absolute;
+  top: 10px;
+  left: 25%;
+  z-index: 5;
+  background-color: #fff;
+  padding: 5px;
+  border: 1px solid #999;
+  text-align: center;
+  font-family: 'Roboto','sans-serif';
+  line-height: 30px;
+  padding-left: 10px;
+}
+
+.startFinish {
+  padding-top: 5px;
+  padding-left: 60px;
+  font-size: 18px;
+}
