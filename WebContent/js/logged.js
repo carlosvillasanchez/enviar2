@@ -54,16 +54,18 @@ function initMap() {
       $("#panelOculto").toggle(100);
     }
     showNetworks();
-    //petition(event.latLng);
+    var lat = event.latlng.lat();
+    var lng = event.latlng.lng();
+    petition(lat, lnf);
     map.setZoom(17);
     addMarker(event.latLng);
     
     
   });
 }
-function petition(location){
-	var lng = location.lng();
-	var lat = location.lat();
+function petition(lat, lng){
+	//var lng = location.lng();
+	//var lat = location.lat();
 	
 	$.ajax({
 		  method: "GET",
@@ -131,7 +133,7 @@ function showNetworks() {
       var lng = cache[i].lng;
 
       //Obtenemos la informacion de cada red wifi
-      $("#cache").append("<a href='#' class='list-group-item list-group-item-action list-group-item-secondary' id='point1'>"+lat + ", " + lng +"</a>");
+      $("#cache").append("<button onclick='petition("+lat+", "+lng+")' class='list-group-item list-group-item-action list-group-item-secondary' >"+lat + ", " + lng +"</button>");
   }
 }
 
@@ -143,20 +145,20 @@ var cache = [{
     "lng": 22.2222222
   },
   {
-    "lat": 11.1111111,
-    "lng": 22.2222222
+    "lat": 12.1111111,
+    "lng": 23.2222222
   },
   {
-    "lat": 11.1111111,
-    "lng": 22.2222222
+    "lat": 13.1111111,
+    "lng": 24.2222222
   },
   {
-    "lat": 11.1111111,
-    "lng": 22.2222222
+    "lat": 14.1111111,
+    "lng": 25.2222222
   },
   {
-    "lat": 11.1111111,
-    "lng": 22.2222222
+    "lat": 15.1111111,
+    "lng": 26.2222222
   }
 ];
 //EJEMPLO DE RESPUESTA DEL SERVIDOR PARA UN PUNTO
