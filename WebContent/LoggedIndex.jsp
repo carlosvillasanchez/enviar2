@@ -41,6 +41,7 @@
           </c:if>
           <c:if test="${name != null}">
           <p id="mensajeUsuario">Hola ${name}</p>
+          <li><a href="FormLogout.jsp"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
           </c:if>
         </ul>
       </div>
