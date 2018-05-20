@@ -54,9 +54,9 @@ function initMap() {
       $("#panelOculto").toggle(100);
     }
     showNetworks();
-    var lat = event.latlng.lat();
-    var lng = event.latlng.lng();
-    petition(lat, lnf);
+    var lat = event.latLng.lat();
+    var lng = event.latLng.lng();
+    petition(lat, lng);
     map.setZoom(17);
     addMarker(event.latLng);
     
@@ -66,7 +66,7 @@ function initMap() {
 function petition(lat, lng){
 	//var lng = location.lng();
 	//var lat = location.lat();
-	
+	$("#loader").css('display', "inline-block");
 	$.ajax({
 		  method: "GET",
 		  //dataType: "json",
@@ -75,6 +75,7 @@ function petition(lat, lng){
               console.log("SUCCESS");
               console.log(data);
               wifi = data;
+              $("#loader").css('display', "none");
               showNetworks();//DEBERIAMOS HACERLO CON UNA PROMESAPERO NO PASA NA
           }
 	});
